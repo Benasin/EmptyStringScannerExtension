@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.benasin'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'net.portswigger.burp.extensions:montoya-api:+'
+    implementation 'org.mozilla:rhino:1.7.14' // Update the version if needed
+}
+
+jar {
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
